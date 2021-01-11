@@ -1,12 +1,14 @@
+from pykalman import KalmanFilter
+
 import numpy as np
 import pandas as pd
-from scipy.interpolate import interp1d
+
 from check_data import check_data, consecutive
 from tsAirgap import ts_airgap, ts_heating, ts_nh4
-from stineman import slopes, stineman_interp
-#from
 
-def na_interpolate(data, option = "linear", maxgap = None) :
+
+
+def na_kalman(data, option = "linear", maxgap = None) :
   """ Missing Value Imputation by Interpolation
   
   Uses linear, spline or stineman interpolation to replace missing values.
@@ -67,8 +69,3 @@ def na_interpolate(data, option = "linear", maxgap = None) :
   x[nan_idx] = intrep_val[nan_idx]
   
   return x
-    
-    
-      
-#C:/Users/Lenovo/AppData/Local/r-miniconda/envs/
-

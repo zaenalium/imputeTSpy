@@ -13,7 +13,7 @@ with open('imputeTSpy/__init__.py', encoding='utf-8') as f:
 
 
 setup(
-        name = 'imputeTSpy',
+        name = 'imputetspy',
         author = 'Ahmad Zaenal',
         description = 'Re-written R package "imputeTS" in python code with some other imputation in time series method ',
         license = 'MIT',

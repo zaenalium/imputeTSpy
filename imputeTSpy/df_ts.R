@@ -29,3 +29,11 @@ write_lines(z$x,  "data/tsHeating.txt", na = "nan", sep = ',')
 
 #conda_install("impyute", envname = "r-reticulate", pip = TRUE)
 
+use_virtualenv("C:\\Users\\Lenovo\\anaconda3\\envs\\myenv")
+
+reticulate::repl_python("C:\\Users\\Lenovo\\anaconda3\\envs\\myenv")
+
+
+Sys.setenv(RETICULATE_PYTHON = "C:\\Users\\Lenovo\\anaconda3\\python.exe")
+
+Sys.getenv("RETICULATE_PYTHON")
