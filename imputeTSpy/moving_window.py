@@ -122,7 +122,7 @@ def moving_window(data, nindex=None, wsize=5, errors="coerce", func=np.mean,
                     data[x_i][y_i] = func(window_not_null)
                 except Exception as e:
                     print("Exception:", e)
-        if n_nan_prev == len(matrix.nan_indices(data)):
+        if n_nan_prev == len(ma trix.nan_indices(data)):
             break
 
     return data

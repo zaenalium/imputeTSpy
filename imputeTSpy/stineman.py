@@ -120,17 +120,4 @@ def stineman_interp(xi,x,y,yp=None):
       
   return yi
 
-if __name__ == '__main__':
-    # Here is some example code
 
-    from pylab import figure, show, nx, linspace
-
-    x = np.linspace(0,2*np.pi,20);
-    y = np.sin(x); yp = None 
-    xi = np.linspace(x[0],x[-1],100);
-    yi = stineman_interp(xi,x,y,yp);
-
-    fig = figure()
-    ax = fig.add_subplot(111)
-    ax.plot(x,y,'ro',xi,yi,'-b.')
-    show()

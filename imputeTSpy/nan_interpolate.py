@@ -33,8 +33,7 @@ def na_interpolate(data, option = "linear", maxgap = None) :
 
   
   """
-  if max
-  
+
   x = check_data(data)
   idx = np.arange(x.shape[0])
   nan_idx = idx[np.isnan(x)]
