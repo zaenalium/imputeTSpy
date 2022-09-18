@@ -1,7 +1,7 @@
 import numpy as np
 import pandas as pd
-from check_data import check_data, consecutive, power_exp
-from tsAirgap import ts_airgap, ts_heating, ts_nh4
+from imputetspy.check_data import check_data, consecutive, power_exp
+from imputetspy.data import ts_airgap, ts_heating, ts_nh4
 #from
 
 def na_ma(data, k = 4, func=np.mean, 

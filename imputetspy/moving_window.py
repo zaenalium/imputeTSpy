@@ -1,10 +1,7 @@
 import numpy as np
-from impyute.ops import matrix
-from impyute.ops import wrapper
+import impyute
 # pylint: disable=invalid-name, too-many-arguments, too-many-locals, too-many-branches, broad-except, len-as-condition
 
-@wrapper.wrappers
-@wrapper.checks
 def moving_window(data, nindex=None, wsize=5, errors="coerce", func=np.mean,
         inplace=False):
     """ Interpolate the missing values based on nearby values.
@@ -67,62 +64,7 @@ def moving_window(data, nindex=None, wsize=5, errors="coerce", func=np.mean,
         Imputed data.
 
     """
-    if errors == "ignore":
-        raise Exception("`errors` value `ignore` not implemented yet. Sorry!")
-
-    if not inplace:
-        data = data.copy()
-
-    if nindex is None: # If using equal window side lengths
-        assert wsize % 2 == 1, "The parameter `wsize` should not be even "\
-        "if the value `nindex` is not set since it defaults to the midpoint "\
-        "and an even `wsize` makes the midpoint ambiguous"
-        wside_left = wsize // 2
-        wside_right = wsize // 2
-    else: # If using custom window side lengths
-        assert nindex < wsize, "The null index must be smaller than the window size"
-        if nindex == -1:
-            wside_left = wsize - 1
-            wside_right = 0
-        else:
-            wside_left = nindex
-            wside_right = wsize - nindex - 1
-
-    while True:
-        nan_xy = matrix.nan_indices(data)
-        n_nan_prev = len(nan_xy)
-        for x_i, y_i in nan_xy:
-            left_i = max(0, y_i-wside_left)
-            right_i = min(len(data), y_i+wside_right+1)
-            window = data[x_i, left_i: right_i]
-            window_not_null = window[~np.isnan(window)]
-
-            if len(window_not_null) > 0:
-                try:
-                    data[x_i][y_i] = func(window_not_null)
-                    continue
-                except Exception as e:
-                    if errors == "raise":
-                        raise e
-
-            if errors == "coerce":
-                # If either the window has a length of 0 or the aggregate function fails somehow,
-                # do a fallback of just trying the best we can by using it as the middle and trying
-                # to recalculate. Use temporary wside_left/wside_right, for only the calculation of
-                # this specific problamatic value
-                wside_left_tmp = wsize // 2
-                wside_right_tmp = wside_left_tmp
-
-                left_i_tmp = max(0, y_i-wside_left_tmp)
-                right_i_tmp = min(len(data), y_i+wside_right_tmp+1)
-
-                window = data[x_i, left_i_tmp:right_i_tmp]
-                window_not_null = window[~np.isnan(window)]
-                try:
-                    data[x_i][y_i] = func(window_not_null)
-                except Exception as e:
-                    print("Exception:", e)
-        if n_nan_prev == len(ma trix.nan_indices(data)):
-            break
+    data = moving_window(data, nindex=None, wsize=5, errors="coerce", func=np.mean,
+        inplace=False)
 
     return data

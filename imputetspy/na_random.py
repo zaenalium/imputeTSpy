@@ -1,7 +1,7 @@
 import numpy as np
 import pandas as pd
-from check_data import check_data, consecutive
-from tsAirgap import ts_airgap, ts_heating, ts_nh4
+from imputetspy.check_data import check_data, consecutive
+from imputetspy.data import ts_airgap, ts_heating, ts_nh4
 #from
 
 def na_random(data, lower_bound = None, upper_bound = None, maxgap = None) :

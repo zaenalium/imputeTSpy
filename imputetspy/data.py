@@ -29,7 +29,7 @@ def ts_airgap():
     
     #DATA_FILE = pkg_resources.resource_filename('imputeTSpy', 'data/tsAirgap.csv')
     
-    df = pd.read_csv('data/tsAirgap.csv')
+    df = pd.read_csv('imputetspy/data/tsAirgap.csv')
  
     return df
     
@@ -61,7 +61,7 @@ def ts_nh4():
     
     #DATA_FILE = pkg_resources.resource_filename('imputeTSpy', 'data/tsAirgap.csv')
     
-    df = np.loadtxt('data/tsNH4.txt', delimiter=",", unpack=False)
+    df = np.loadtxt('imputetspy/data/tsNH4.txt', delimiter=",", unpack=False)
  
     return df
 
@@ -93,7 +93,7 @@ def ts_heating ():
     
     #DATA_FILE = pkg_resources.resource_filename('imputeTSpy', 'data/tsAirgap.csv')
     
-    df = np.loadtxt('data/tsHeating.txt', delimiter=",", unpack=False)
+    df = np.loadtxt('imputetspy/data/tsHeating.txt', delimiter=",", unpack=False)
  
     return df
 

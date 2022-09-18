@@ -1,9 +1,9 @@
 import numpy as np
 import pandas as pd
 from scipy.interpolate import interp1d
-from check_data import check_data, consecutive
-from tsAirgap import ts_airgap, ts_heating, ts_nh4
-from stineman import slopes, stineman_interp
+from imputetspy.check_data import check_data, consecutive
+from imputetspy.data import ts_airgap, ts_heating, ts_nh4
+from imputetspy.stineman import slopes, stineman_interp
 #from
 
 def na_interpolate(data, option = "linear", maxgap = None) :
@@ -38,16 +38,16 @@ def na_interpolate(data, option = "linear", maxgap = None) :
   idx = np.arange(x.shape[0])
   nan_idx = idx[np.isnan(x)]
   
-    if maxgap != None :
-      z = consecutive(nan_idx)
-      exc = []
-      for i in range(len(z)) :
-          if len(z[i]) > maxgap :
-              exc.extend(z[i])
-      nan_idx = nan_idx[np.isin(nan_idx, exc) == False]
-    else :
-        pass
-  
+  if maxgap != None :
+    z = consecutive(nan_idx)
+    exc = []
+    for i in range(len(z)) :
+        if len(z[i]) > maxgap :
+            exc.extend(z[i])
+    nan_idx = nan_idx[np.isin(nan_idx, exc) == False]
+  else :
+      pass
+
   
   if option == "linear" :
     f = interp1d(idx[np.isin(idx, nan_idx) == False],

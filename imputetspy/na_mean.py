@@ -1,11 +1,11 @@
 import numpy as np
 import pandas as pd
-from check_data import check_data, consecutive
-from tsAirgap import ts_airgap, ts_heating, ts_nh4
+from imputetspy.check_data import check_data, consecutive
+from imputetspy.data import ts_airgap, ts_heating, ts_nh4
 #from impyute.ops import error
 from scipy.stats import gmean, hmean, mode
 
-def na_ma(data, k = 4, option = "mean") :
+def na_mean(data, k = 4, option = "mean") :
   """ Missing Value Imputation by Random Sample
   
   Missing value replacement by weighted moving average. Uses semi-adaptive window size to ensure all NAs are replaced  
@@ -61,15 +61,15 @@ def na_ma(data, k = 4, option = "mean") :
   else :
     pass
   
-  if option = "mean" :
+  if option == "mean" :
     val = np.nanmean(x)
-  elif option = "median" :
+  elif option == "median" :
     val = np.nanmedian(x)
-  elif option = "harmonic" :
+  elif option == "harmonic" :
     val = hmean(x[np.isnan(x)])
-  elif option = "geometric" :
+  elif option == "geometric" :
     val = gmean(x[np.isnan(x)])
-  elif option = "mode" :
+  elif option == "mode" :
     val = mode(x[np.isnan(x)])
   
   x[nan_idx] = val
