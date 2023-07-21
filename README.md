@@ -10,7 +10,7 @@ This package is a package for all imputation method in time series method. Most 
 ```
 # manual installations
 git clone https://github.com/zaenalium/imputeTSpy
-cd foo imputeTSpy
+cd imputeTSpy
 python setup.py install
 ```
 
