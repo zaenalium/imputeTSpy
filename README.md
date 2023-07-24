@@ -8,14 +8,13 @@ This package is a package for all imputation method in time series method. Most 
 ## Instalations
 
 ```
-# manual installations
+# manual installations from source
 git clone https://github.com/zaenalium/imputeTSpy
 cd imputeTSpy
 python setup.py install
 ```
 
 ```
-# manual installations
 
 pip install imputetspy
 

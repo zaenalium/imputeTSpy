@@ -1,17 +1,40 @@
-# Welcome to MkDocs
+# ImputeTSpy: Missing Values Imputation for Time Series Data
 
-For full documentation visit [mkdocs.org](https://www.mkdocs.org).
+Imputation method for time series data inspired by *imputeTS* package in R. Most of this kind of package are available in R, however, when we use the package for interfacing python to R is somehow complicated, and need to install a lot of things as well as the performance is doesn't meet our expectation. Thefore, I decide to create this dedicated python package for time series imputation.
 
-## Commands
+## Installation
 
-* `mkdocs new [dir-name]` - Create a new project.
-* `mkdocs serve` - Start the live-reloading docs server.
-* `mkdocs build` - Build the documentation site.
-* `mkdocs -h` - Print help message and exit.
+```
+# manual installations from source
+git clone https://github.com/zaenalium/imputeTSpy
+cd imputeTSpy
+python setup.py install
+```
 
-## Project layout
+```
 
-    mkdocs.yml    # The configuration file.
-    docs/
-        index.md  # The documentation homepage.
-        ...       # Other markdown pages, images and other files.
+pip install imputetspy
+
+```
+
+## Getting Started
+
+This packages contains the imputation method code, some graph to visualize the imputation values and the data sample. please take a look of this examples:
+
+```
+# get the sample data
+data = ts_nh4()
+import imputetspy
+
+data = imputetspy.ts_nh4()
+
+# impute the missing values using overall mean and median
+
+data_fill_mean = imputetspy.na_mean(data, option = 'mean')
+
+data_fill_med = imputetspy.na_mean(data, option = 'median')
+
+```
+
+## APIs
+
