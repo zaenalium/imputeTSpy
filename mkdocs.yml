@@ -1,1 +1,10 @@
-site_name: My Docs
+site_name: imputeTSpy
+
+nav:
+  - Home: index.md
+  - API: apis.md
+
+plugins:
+- mkdocstrings
+
+theme: readthedocs

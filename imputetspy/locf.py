@@ -4,8 +4,7 @@ from imputetspy.check_data import check_data, consecutive
 from imputetspy.data import ts_airgap, ts_heating, ts_nh4
 #from impyute.ops import error
 
-#@wrapper.wrappers
-#@wrapper.checks
+
 def locf(data, na_remaining = "rev", maxgap = None):
     """ Last Observation Carried Forward
     
@@ -15,28 +14,25 @@ def locf(data, na_remaining = "rev", maxgap = None):
     Repeat until you find a row in this column that's not NaN. All the rows
     before will be filled with this value.
     
-    Parameters
-    ----------
-    data: numpy.array, list or pandas.Series
-        Data to impute.
-    na_remaining : Method to be used for remaining nan (if missing number apear in the first observation) :
-        "keep" - to return the series with NAs
-        "mean" - to replace remaining NAs by overall mean
-        "rev" - to perform nocb / locf from the reverse direction
-    maxgap : Maximum number of successive NAs to still perform imputation on. Default setting is to replace all NAs without restrictions. With this option set, consecutive nan runs, that are longer than 'maxgap' will be left nan. This option mostly makes sense if you want to treat long runs of nan afterwards separately
-    Returns
-    -------
-    numpy.array
-        Imputed data.
+    Parameters:
+        data: numpy.array, list or pandas.Series
+            Data to impute.
+        na_remaining : Method to be used for remaining nan (if missing number apear in the first observation) :
+            "keep" - to return the series with NAs
+            "mean" - to replace remaining NAs by overall mean
+            "rev" - to perform nocb / locf from the reverse direction
+        maxgap : Maximum number of successive NAs to still perform imputation on. Default setting is to replace all NAs without restrictions. With this option set, consecutive nan runs, that are longer than 'maxgap' will be left nan. This option mostly makes sense if you want to treat long runs of nan afterwards separately
+    
+    Returns:
+        numpy.array imputed data.
         
-    Examples
-    ------
-    import imputeTSpy
-    
-    data = imputeTSpy.ts_nh4()
-    
-    data_fill_locf = imputeTSpy.locf(data)
-    data_fill_nocb = imputeTSpy.nocb(data)
+    Examples:
+        >>> import imputeTSpy
+        
+        >>> data = imputeTSpy.ts_nh4()
+        
+        >>> data_fill_locf = imputeTSpy.locf(data)
+        >>> data_fill_nocb = imputeTSpy.nocb(data)
     
     """
     data = check_data(data)
@@ -87,29 +83,25 @@ def nocb(data, axis=0, na_remaining = "rev", maxgap = None):
     Repeat until you find a row in this column that's not NaN. All the rows
     before will be filled with this value.
 
-    Parameters
-    ----------
-    data: numpy.array, list or pandas.Series
-        Data to impute.
-    na_remaining : Method to be used for remaining nan (if missing number apear in the first observation) :
-        "keep" - to return the series with NAs
-        "mean" - to replace remaining NAs by overall mean
-        "rev" - to perform nocb / locf from the reverse direction
-    maxgap : Maximum number of successive NAs to still perform imputation on. Default setting is to replace all NAs without restrictions. With this option set, consecutive nan runs, that are longer than 'maxgap' will be left nan. This option mostly makes sense if you want to treat long runs of nan afterwards separately
+    Parameters:
+        data: numpy.array, list or pandas.Series
+            Data to impute.
+        na_remaining : Method to be used for remaining nan (if missing number apear in the first observation) :
+            "keep" - to return the series with NAs
+            "mean" - to replace remaining NAs by overall mean
+            "rev" - to perform nocb / locf from the reverse direction
+        maxgap : Maximum number of successive NAs to still perform imputation on. Default setting is to replace all NAs without restrictions. With this option set, consecutive nan runs, that are longer than 'maxgap' will be left nan. This option mostly makes sense if you want to treat long runs of nan afterwards separately
 
-    Returns
-    -------
-    numpy.ndarray
-        Imputed data.
+    Returns:
+        numpy.ndarray Imputed data.
     
-    Examples
-    ------
-    import imputeTSpy
-    
-    data = imputeTSpy.ts_nh4()
-    
-    data_fill_locf = imputeTSpy.locf(data)
-    data_fill_nocb = imputeTSpy.nocb(data)
+    Examples:
+        >>> import imputeTSpy
+        
+        >>> data = imputeTSpy.ts_nh4()
+        
+        >>> data_fill_locf = imputeTSpy.locf(data)
+        >>> data_fill_nocb = imputeTSpy.nocb(data)
     """
     data = check_data(data)
     nan_xy = np.argwhere(np.isnan(data))

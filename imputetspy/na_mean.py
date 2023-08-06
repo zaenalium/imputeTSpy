@@ -5,40 +5,35 @@ from imputetspy.data import ts_airgap, ts_heating, ts_nh4
 from scipy.stats import gmean, hmean, mode
 
 def na_mean(data, option = "mean", maxgap = None) :
-    """ Missing Value Imputation by Average values (can use median & mode as well)
-    
-    Missing value replacement by overall mean (or other metric) values.    
-    
-    Parameters
-    ----------
-    data: numpy.array, list or pandas.Series
-            Data to impute.
-            
-    option:Algorithm to be used. Accepts the following input:
-        * "mean" - take the mean for imputation (default choice)
-        * "median" - take the median for imputation
-        * "mode" - take the mode for imputation
-        * "harmonic" - take the harmonic mean
-        * "geometric" - take the geometric mean
-                            
-    maxgap: Maximum number of successive NAs to still perform imputation on. Default setting is to replace all NAs without limitation. With this option set, consecutive NAs runs, that are longer than 'maxgap' will be left NA. This option mostly makes sense if you want to treat long runs of NA afterwards separately.
-    Returns
-    -------
-    numpy.array
-            Imputed data.
-    
-    Examples
-    ------
-    
-    data = ts_nh4()
-    import imputetspy
-    
-    data = imputetspy.ts_nh4()
-    
-    data_fill_mean = imputetspy.na_mean(data, option = 'mean')
+    """ Missing Value Imputation by overall Average values (can use median & mode as well)
+        
 
-    data_fill_med = imputetspy.na_mean(data, option = 'median')
+    Parameters:
 
+        data (float): numpy.array, list or pandas.Series data to impute.
+        option (string): Algorithm to be used. Accepts these following input:  
+
+                - "mean" - take the mean for imputation (default choice)\n
+                - "median" - take the median for imputation\n
+                - "mode" - take the mode for imputation\n
+                - "harmonic" - take the harmonic mean\n
+                - "geometric" - take the geometric mean\n    
+
+        maxgap (int): Maximum number of successive NAs to still perform imputation on. 
+                Default setting is to replace all NAs without limitation. 
+                With this option set, consecutive NAs runs, that are longer than 'maxgap' will be left NA. 
+                This option mostly makes sense if you want to treat long runs of NA afterwards separately.
+        
+    
+    Returns:
+        numpy array imputed data.
+    
+    Examples:
+    
+        >>> import imputetspy
+        >>> data = imputetspy.ts_nh4()
+        >>> data_fill_mean = imputetspy.na_mean(data, option = 'mean')
+        >>> data_fill_med = imputetspy.na_mean(data, option = 'median')
     
     """
     

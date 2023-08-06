@@ -12,24 +12,23 @@ def na_interpolate(data, option = "linear", maxgap = None) :
   Uses linear, spline or stineman interpolation to replace missing values.
 
   
-  Parameters
-  ----------
-  data: numpy.array, list or pandas.Series
-      Data to impute.
+  Parameters:
+    data: numpy.array, list or pandas.Series data to impute.
+    option: The interpolate algorithm to be used. Accepts these following input:  
+                - "linear" - use linear interpolation\n
+                - "spline" - interpolation based on spline function\n
+                - "stineman" - interpolation based on stineman function\n
 
-  Returns
-  -------
-  numpy.array
-      Imputed data.
+  Returns:
+    numpy.array imputed data.
   
-  Examples
-  ------
-  import imputeTSpy
-  
-  data = imputeTSpy.ts_nh4()
-  
-  data_fill_locf = imputeTSpy.locf(data)
-  data_fill_nocb = imputeTSpy.nocb(data)
+  Examples:
+    >>> import imputeTSpy
+    
+    >>> data = imputeTSpy.ts_nh4()
+    
+    >>> data_fill_lin = imputeTSpy.na_interpolate(data, option = 'linear')
+    >>> data_fill_sp = imputeTSpy.na_interpolate(data, option = 'spline')
 
   
   """
@@ -68,6 +67,5 @@ def na_interpolate(data, option = "linear", maxgap = None) :
   return x
     
     
-      
-#C:/Users/Lenovo/AppData/Local/r-miniconda/envs/
+    
 

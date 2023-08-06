@@ -36,5 +36,3 @@ data_fill_med = imputetspy.na_mean(data, option = 'median')
 
 ```
 
-## APIs
-
