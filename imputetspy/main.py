@@ -1,13 +1,10 @@
 import numpy as np
 import pandas as pd
-from imputetspy.utils import check_data, consecutive, power_exp
-from imputetspy.data import ts_airgap, ts_heating, ts_nh4
+from imputetspy.utils import check_data, consecutive, power_exp, stineman_interp, slopes
+from imputetspy.datasets import ts_airgap, ts_heating, ts_nh4
 from scipy import stats
-from imputetspy.data import ts_airgap, ts_heating, ts_nh4
 from scipy.stats import gmean, hmean, mode
 from scipy.interpolate import interp1d
-from imputetspy.data import ts_airgap, ts_heating, ts_nh4
-from imputetspy.utils import slopes, stineman_interp
 
 
 def na_ma(data, k = 4, func='mean', 
