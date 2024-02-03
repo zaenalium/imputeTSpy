@@ -1,3 +1,28 @@
+import numpy as np
+
+def check_data(data) :  
+  data_type = str(type(data))
+  if ("list" in data_type) :
+    x = np.asarray(data)
+  elif ("series" in data_type) :
+    x = data.values
+  elif ("array" in data_type) :
+    x = data.copy()
+  else :
+    print("this function are available for single columns data, please do not use pd.DataFrame")
+  return x
+
+def consecutive(data, stepsize=1):
+  return np.split(data, np.where(np.diff(data) != stepsize)[0]+1)
+
+def power_exp(x) :
+  result = []
+  for i in range(x) :
+    j = i + 1
+    result.append(np.power(1/2, j))
+  return np.array(result)
+
+
 #!/usr/bin/env python
 import numpy as np
 
@@ -24,18 +49,19 @@ def slopes(x,y):
   (inspired by a original implementation by Halldor Bjornsson,
   Icelandic Meteorological Office, March 2006 halldor at vedur.is)
   """
-  x=np.asarray(x, np.float64)
-  y=np.asarray(y, np.float64)
+  x = np.asarray(x, np.float64)
+  y = np.asarray(y, np.float64)
   
-  yp=np.zeros(y.shape, np.float64)
+  yp = np.zeros(y.shape, np.float64)
   
-  dx=x[1:] - x[:-1]
-  dy=y[1:] - y[:-1]
+  dx = x[1:] - x[:-1]
+  dy = y[1:] - y[:-1]
   dydx = dy/dx
   yp[1:-1] = (dydx[:-1] * dx[1:] + dydx[1:] * dx[:-1])/(dx[1:] + dx[:-1])
   yp[0] = 2.0 * dy[0]/dx[0] - yp[1]
   yp[-1] = 2.0 * dy[-1]/dx[-1] - yp[-2]
   return yp
+
 
 
 def stineman_interp(xi,x,y,yp=None):
@@ -71,19 +97,20 @@ def stineman_interp(xi,x,y,yp=None):
   Institute of Theoretical Physics, University or Regensburg, April
   2006 Norbert.Nemec at physik.uni-regensburg.de
   """
+
   # Cast key variables as float.
-  x=np.asarray(x, np.float64)
-  y=np.asarray(y, np.float64)
+  x = np.asarray(x, np.float64)
+  y = np.asarray(y, np.float64)
   assert x.shape == y.shape
-  N=len(y)
+  N = len(y)
   
   if yp is None:
       yp = slopes(x,y)
   else:
-      yp=np.asarray(yp, np.float64)
+      yp = np.asarray(yp, np.float64)
   
-  xi=np.asarray(xi, np.float64)
-  yi=np.zeros(xi.shape, np.float64)
+  xi = np.asarray(xi, np.float64)
+  yi = np.zeros(xi.shape, np.float64)
   
   # calculate linear slopes
   dx = x[1:] - x[:-1]

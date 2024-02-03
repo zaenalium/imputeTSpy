@@ -1,16 +1,7 @@
 # -*- coding:utf-8 -*- 
+from imputetspy.main import na_ma, na_mean, na_random, na_interpolate, locf, nocb
 
-from imputetspy.data import ts_airgap, ts_nh4, ts_heating
-from imputetspy.data import ts_airgap, ts_nh4, ts_heating
-from imputetspy.na_ma import na_ma
-from imputetspy.na_mean import na_mean
-from imputetspy.na_random import na_random
-from imputetspy.nan_interpolate import na_interpolate
-from imputetspy.moving_window import moving_window
-from imputetspy.locf import locf, nocb
-
-
-__version__ = '0.0.999'
+__version__ = '0.1.0'
 
 # __all__ = (
 #     ts_airgap, ts_nh4, ts_heating
