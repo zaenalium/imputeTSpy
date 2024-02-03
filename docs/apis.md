@@ -8,7 +8,7 @@
             trim_doctest_flags: true
 
 
-:::imputetspy.data
+:::imputetspy.datasets
     options:
         docstring_style: google
         docstring_section_style: list
