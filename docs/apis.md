@@ -1,5 +1,5 @@
 # imputeTSpy API
-:::imputetspy.na_mean
+:::imputetspy.main
     options:
         docstring_style: google
         docstring_section_style: list
@@ -8,33 +8,7 @@
             trim_doctest_flags: true
 
 
-:::imputetspy.na_ma
-    options:
-        docstring_style: google
-        docstring_section_style: list
-        docstring_options:
-            ignore_init_summary: false
-            trim_doctest_flags: true
-
-:::imputetspy.na_random
-    options:
-        docstring_style: google
-        docstring_section_style: list
-        docstring_options:
-            ignore_init_summary: false
-            trim_doctest_flags: true
-
-
-:::imputetspy.locf
-    options:
-        docstring_style: google
-        docstring_section_style: list
-        docstring_options:
-            ignore_init_summary: false
-            trim_doctest_flags: true
-
-
-:::imputetspy.nan_interpolate
+:::imputetspy.datasets
     options:
         docstring_style: google
         docstring_section_style: list

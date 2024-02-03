@@ -1,5 +1,9 @@
 import numpy as np
 import pandas as pd
+from importlib import resources
+
+
+DATA_MODULE = "imputetspy"
 
 def ts_airgap():
     '''
@@ -28,8 +32,9 @@ def ts_airgap():
     
     
     #DATA_FILE = pkg_resources.resource_filename('imputeTSpy', 'data/tsAirgap.csv')
-    
-    df = pd.read_csv('imputetspy/data/tsAirgap.csv')
+    data_path = resources.files(DATA_MODULE) /'data'/'tsAirgap.csv'
+
+    df = pd.read_csv(data_path)
  
     return df
     
@@ -59,9 +64,9 @@ def ts_nh4():
     # dat.dtypes
     '''
     
-    #DATA_FILE = pkg_resources.resource_filename('imputeTSpy', 'data/tsAirgap.csv')
+    data_path = resources.files(DATA_MODULE) /'data'/'tsNH4.txt'
     
-    df = np.loadtxt('imputetspy/data/tsNH4.txt', delimiter=",", unpack=False)
+    df = np.loadtxt(data_path, delimiter=",", unpack=False)
  
     return df
 
@@ -92,8 +97,9 @@ def ts_heating ():
     '''
     
     #DATA_FILE = pkg_resources.resource_filename('imputeTSpy', 'data/tsAirgap.csv')
-    
-    df = np.loadtxt('imputetspy/data/tsHeating.txt', delimiter=",", unpack=False)
+    data_path = resources.files(DATA_MODULE) /'data'/'tsHeating.txt'
+
+    df = np.loadtxt(data_path, delimiter=",", unpack=False)
  
     return df
 
