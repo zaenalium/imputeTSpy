@@ -20,8 +20,6 @@ def na_ma(data, k = 4, func='mean',
         func : metric function, such as mean, median, mode, or any function that return single number e.g numpy.std(), numpy.max(), or custom function.
 
         weighting:	Weighting to be used. Accepts the following input:
-        
-                                * "simple" - Simple Moving Average (SMA)
                                 
                                 * "linear" - Linear Weighted Moving Average (LWMA)
                                 
@@ -29,7 +27,7 @@ def na_ma(data, k = 4, func='mean',
                                 
         maxgap: Maximum number of successive NAs to still perform imputation on. Default setting is to replace all NAs without restrictions. With this option set, consecutive NAs runs, that are longer than 'maxgap' will be left NA. This option mostly makes sense if you want to treat long runs of NA afterwards separately.
     Returns:
-        numpy.array mputed data.
+        numpy.array imputed data.
     
     Examples:
     
@@ -196,11 +194,11 @@ def na_random(data, lower_bound = None, upper_bound = None, maxgap = None) :
     
     Examples:
 
-        >>> import imputeTSpy
+        >>> import imputetspy
         
-        >>> data = imputeTSpy.ts_nh4()
+        >>> data = imputetspy.ts_nh4()
         
-        >>> data_fill_random = imputeTSpy.na_random(data)
+        >>> data_fill_random = imputetspy.na_random(data)
 
     
     """
@@ -257,12 +255,12 @@ def locf(data, na_remaining = "rev", maxgap = None):
         numpy.array imputed data.
         
     Examples:
-        >>> import imputeTSpy
+        >>> import imputetspy
         
-        >>> data = imputeTSpy.ts_nh4()
+        >>> data = imputetspy.ts_nh4()
         
-        >>> data_fill_locf = imputeTSpy.locf(data)
-        >>> data_fill_nocb = imputeTSpy.nocb(data)
+        >>> data_fill_locf = imputetspy.locf(data)
+        >>> data_fill_nocb = imputetspy.nocb(data)
     
     """
     data = check_data(data)
@@ -326,12 +324,12 @@ def nocb(data, axis=0, na_remaining = "rev", maxgap = None):
         numpy.ndarray Imputed data.
     
     Examples:
-        >>> import imputeTSpy
+        >>> import imputetspy
         
-        >>> data = imputeTSpy.ts_nh4()
+        >>> data = imputetspy.ts_nh4()
         
-        >>> data_fill_locf = imputeTSpy.locf(data)
-        >>> data_fill_nocb = imputeTSpy.nocb(data)
+        >>> data_fill_locf = imputetspy.locf(data)
+        >>> data_fill_nocb = imputetspy.nocb(data)
     """
     data = check_data(data)
     nan_xy = np.argwhere(np.isnan(data))
@@ -391,12 +389,12 @@ def na_interpolate(data, option = "linear", maxgap = None) :
     numpy.array imputed data.
   
   Examples:
-    >>> import imputeTSpy
+    >>> import imputetspy
     
-    >>> data = imputeTSpy.ts_nh4()
+    >>> data = imputetspy.ts_nh4()
     
-    >>> data_fill_lin = imputeTSpy.na_interpolate(data, option = 'linear')
-    >>> data_fill_sp = imputeTSpy.na_interpolate(data, option = 'spline')
+    >>> data_fill_lin = imputetspy.na_interpolate(data, option = 'linear')
+    >>> data_fill_sp = imputetspy.na_interpolate(data, option = 'spline')
 
   
   """
