@@ -5,6 +5,10 @@ nav:
   - API: apis.md
 
 plugins:
-- mkdocstrings
+  - mkdocstrings:
+      default_handler: python
+      handlers:
+        python:
+          paths: [docs]
 
 theme: readthedocs
