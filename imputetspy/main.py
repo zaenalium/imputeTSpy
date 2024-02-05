@@ -32,7 +32,7 @@ def na_ma(data, k = 4, func='mean',
     Examples:
     
         >>> import imputetspy    
-        >>> data = imputetspy.ts_nh4()
+        >>> data = imputetspy.datasets.ts_nh4()
         >>> data_fill_ma = imputetspy.na_ma(data, 4)
 
     
@@ -139,7 +139,7 @@ def na_mean(data, option = "mean", maxgap = None) :
     Examples:
     
         >>> import imputetspy
-        >>> data = imputetspy.ts_nh4()
+        >>> data = imputetspy.datasets.ts_nh4()
         >>> data_fill_mean = imputetspy.na_mean(data, option = 'mean')
         >>> data_fill_med = imputetspy.na_mean(data, option = 'median')
     
@@ -196,9 +196,9 @@ def na_random(data, lower_bound = None, upper_bound = None, maxgap = None) :
 
         >>> import imputetspy
         
-        >>> data = imputetspy.ts_nh4()
+        >>> data = imputetspy.datasets.ts_nh4()
         
-        >>> data_fill_random = imputetspy.na_random(data)
+        >>> data_fill_random = imputetspy.na_random(data, lower_bound = min(data_fill_random) , upper_bound = max(data_fill_random))
 
     
     """
@@ -257,7 +257,7 @@ def locf(data, na_remaining = "rev", maxgap = None):
     Examples:
         >>> import imputetspy
         
-        >>> data = imputetspy.ts_nh4()
+        >>> data = imputetspy.datasets.ts_nh4()
         
         >>> data_fill_locf = imputetspy.locf(data)
         >>> data_fill_nocb = imputetspy.nocb(data)
@@ -314,7 +314,7 @@ def nocb(data, axis=0, na_remaining = "rev", maxgap = None):
     Parameters:
         data: numpy.array, list or pandas.Series
             Data to impute.
-        na_remaining : Method to be used for remaining nan (if missing number apear in the first observation) :
+        na_remaining : Method to be used for remaining nan (if missing number apear in the last observation) :
             "keep" - to return the series with NAs
             "mean" - to replace remaining NAs by overall mean
             "rev" - to perform nocb / locf from the reverse direction
@@ -326,7 +326,7 @@ def nocb(data, axis=0, na_remaining = "rev", maxgap = None):
     Examples:
         >>> import imputetspy
         
-        >>> data = imputetspy.ts_nh4()
+        >>> data = imputetspy.datasets.ts_nh4()
         
         >>> data_fill_locf = imputetspy.locf(data)
         >>> data_fill_nocb = imputetspy.nocb(data)
@@ -391,7 +391,7 @@ def na_interpolate(data, option = "linear", maxgap = None) :
   Examples:
     >>> import imputetspy
     
-    >>> data = imputetspy.ts_nh4()
+    >>> data = imputetspy.datasets.ts_nh4()
     
     >>> data_fill_lin = imputetspy.na_interpolate(data, option = 'linear')
     >>> data_fill_sp = imputetspy.na_interpolate(data, option = 'spline')
