@@ -17,7 +17,7 @@ setup(
         author = 'Ahmad Zaenal',
         description = 'Re-written R package "imputeTS" in python code with some other imputation in time series method ',
         license = 'MIT',
-        project_urls = 'https://github.com/zaenalium/imputeTSpy',
+        project_urls = {'homepage': 'https://github.com/zaenalium/imputeTSpy'},
         include_package_data=True,
         version=__version__,
         packages =  ['imputetspy'], #find_packages(),
