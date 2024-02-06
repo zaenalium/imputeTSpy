@@ -1,6 +1,6 @@
 # ImputeTSpy: Missing Values Imputation for Time Series Data
 
-Imputation method for time series data inspired by *imputeTS* package in R. Most of this kind of package are available in R, however, when we use the package for interfacing python to R is somehow complicated, and need to install a lot of things as well as the performance is doesn't meet our expectation. Thefore, I decide to create this dedicated python package for time series imputation.
+Imputation method for time series data inspired by *imputeTS* package in R. 
 
 ## Installation
 
